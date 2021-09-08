@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  mongodb:
+    image : mongo
+    container_name: mongodb
+    volumes:
+      - /home/barry/mongodb/database:/data/db
+    ports:
+      - "27017:27017"
+  app:
+    build:
+      dockerfile: Dockerfile
+    container_name: peopleflowtask
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=db
+    depends_on:
+      - mongodb
