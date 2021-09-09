@@ -1,6 +1,7 @@
 package eu.senla.peopleflowtask.controller;
 
 import eu.senla.peopleflowtask.domain.Employee;
+import eu.senla.peopleflowtask.dto.EmployeeStateDto;
 import eu.senla.peopleflowtask.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,8 @@ public class EmployeeController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> updateState(@PathVariable String id, @RequestBody Employee employee){
-        employeeService.updateEmployeeState(id, employee.getState());
+    public ResponseEntity<Void> updateState(@PathVariable String id, @RequestBody EmployeeStateDto employeeStateDto){
+        employeeService.updateEmployeeState(id, employeeStateDto.getEmployeeState());
         return ResponseEntity.noContent().build();
     }
 }

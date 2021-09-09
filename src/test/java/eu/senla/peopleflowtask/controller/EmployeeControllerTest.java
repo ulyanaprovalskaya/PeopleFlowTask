@@ -56,7 +56,7 @@ class EmployeeControllerTest {
     }
 
     @Test
-    void updateState() throws Exception {
+    void updateState_changesEmployeeState() throws Exception {
         String requestBody = objectMapper.writeValueAsString(employee);
 
         MvcResult result = mockMvc.perform(post("/employees")

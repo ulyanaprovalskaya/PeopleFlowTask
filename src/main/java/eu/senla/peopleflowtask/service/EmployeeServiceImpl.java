@@ -9,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -29,13 +27,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public void updateEmployeeState(String id, EmployeeState newState) {
-        Optional<Employee> employeeOptional = employeeRepository.findById(id);
-
-        if (employeeOptional.isEmpty()) {
-            throw new EmployeeNotFoundException("Employee with id=" + id + " doesn't exist");
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(String.format("Employee with id=%s doesn't exist", id)));
+        if(!employee.getState().equals(newState)) {
+            employee.setState(newState);
+            employeeRepository.save(employee);
         }
-
-        Employee employee = employeeOptional.get();
-        employee.setState(newState);
     }
 }
