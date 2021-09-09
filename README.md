@@ -8,7 +8,7 @@
 {
     "firstName": "abc",
     "lastName": "def",
-    "age": 31
+    "age": 31,
     "contractInfornation": "qwerty"
 }
 ```
