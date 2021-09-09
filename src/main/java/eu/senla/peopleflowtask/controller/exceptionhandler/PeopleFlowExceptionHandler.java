@@ -1,5 +1,6 @@
 package eu.senla.peopleflowtask.controller.exceptionhandler;
 
+import eu.senla.peopleflowtask.exception.CannotChangeStateException;
 import eu.senla.peopleflowtask.exception.EmployeeNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public class PeopleFlowExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.internalServerError().build();
     }
 
-    @ExceptionHandler
-    protected ResponseEntity<Object> handleException(EmployeeNotFoundException ex) {
+    @ExceptionHandler(value = {EmployeeNotFoundException.class, CannotChangeStateException.class})
+    protected ResponseEntity<Object> handleException(RuntimeException ex) {
         log.error("ERROR: " + ex.getMessage());
         return ResponseEntity.notFound().build();
     }

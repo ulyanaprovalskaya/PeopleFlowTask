@@ -7,5 +7,5 @@ public interface EmployeeService {
 
     Employee addEmployee(Employee employee);
 
-    void updateEmployeeState(String id, EmployeeState newState);
+    void updateEmployeeState(String id, EmployeeState targetState);
 }

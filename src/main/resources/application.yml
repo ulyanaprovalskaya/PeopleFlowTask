@@ -1,0 +1,18 @@
+statemachine:
+  states:
+    -
+      current: ADDED
+      next: IN_CHECK
+      previous: ADDED
+    -
+      current: IN_CHECK
+      next: APPROVED
+      previous: ADDED
+    -
+      current: APPROVED
+      next: ACTIVE
+      previous: IN_CHECK
+    -
+      current: ACTIVE
+      next: ACTIVE
+      previous: APPROVED
