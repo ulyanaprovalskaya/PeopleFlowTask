@@ -9,7 +9,7 @@
     "firstName": "abc",
     "lastName": "def",
     "age": 31,
-    "contractInfornation": "qwerty"
+    "contractInformation": "qwerty"
 }
 ```
 
