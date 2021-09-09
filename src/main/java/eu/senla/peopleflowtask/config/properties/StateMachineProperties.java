@@ -1,5 +1,6 @@
-package eu.senla.peopleflowtask.statemachine;
+package eu.senla.peopleflowtask.config.properties;
 
+import eu.senla.peopleflowtask.statemachine.EmployeeStateStructure;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

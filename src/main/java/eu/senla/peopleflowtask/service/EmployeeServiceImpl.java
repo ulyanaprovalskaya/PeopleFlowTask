@@ -28,7 +28,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Transactional
     public void updateEmployeeState(String id, EmployeeState targetState) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(String.format("Employee with id=%s doesn't exist", id)));
